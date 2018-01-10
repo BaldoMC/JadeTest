@@ -47,14 +47,8 @@ public class PrimerAgente extends Agent {
 						}
 					}
 					//Se muestra por un mensaje el contenido
-					JOptionPane.showMessageDialog(null,"Mensaje de: " +mensaje.getSender().getLocalName() +" con texto: " + mensaje.getContent());
-					//Se pausa por 3 segundos
-					try{ 
-						Thread.sleep(3000); 
-					} catch(InterruptedException e ){ 
-						System.out.println("Thread Interrupted");
-						
-					}
+					JOptionPane.showMessageDialog(null,mensaje.getSender().getLocalName() +": " + mensaje.getContent());
+
 					//Se envia la respuesta
 					myAgent.send(respuesta);
 				}else
