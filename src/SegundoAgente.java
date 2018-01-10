@@ -16,20 +16,27 @@ public class SegundoAgente extends Agent{
 				
 				ACLMessage mensaje = receive();
 				if(mensaje!=null) {
+					ACLMessage respuesta = mensaje.createReply();
 					if(mensaje.getContent().contains("Hola")) {
-						ACLMessage respuesta = mensaje.createReply();
+						
 						respuesta.setContent("holaaaa, ¿como estas?");
-						myAgent.send(respuesta);
+	
 					}else {
 						if(mensaje.getContent().contains("bien y tu")) {
-							ACLMessage respuesta = mensaje.createReply();
+							
 							respuesta.setContent("muy bien, ahora me tengo que ir, ¡chao!");
-							myAgent.send(respuesta);
+							
 						}
 					}
-					JOptionPane.showMessageDialog(null, "Tu mensaje os ha sido recibido, y es: " +mensaje.getContent());
-				
 					
+					JOptionPane.showMessageDialog(null, "Tu mensaje os ha sido recibido, y es: " +mensaje.getContent());
+					try{ 
+						Thread.sleep(3000); 
+					} catch(InterruptedException e ){ 
+						System.out.println("Thread Interrupted");
+						
+					}
+					myAgent.send(respuesta);
 
 				}else block();
 				

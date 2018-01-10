@@ -23,18 +23,26 @@ public class PrimerAgente extends Agent {
 			public void action() {
 				ACLMessage mensaje = receive();
 				if(mensaje!= null) {
+					ACLMessage respuesta = mensaje.createReply();
 					if(mensaje.getContent().contains("como estas")) {
-						ACLMessage respuesta = mensaje.createReply();
+						
 						respuesta.setContent("bien y tu?");
-						myAgent.send(respuesta);
+					
 					}else {
 						if(mensaje.getContent().contains("chao")) {
-							ACLMessage respuesta = mensaje.createReply();
+							
 							respuesta.setContent("Chaaaao");
-							myAgent.send(respuesta);
+						
 						}
 					}
 					JOptionPane.showMessageDialog(null,"Mensaje: "+ mensaje.getContent());
+					try{ 
+						Thread.sleep(3000); 
+					} catch(InterruptedException e ){ 
+						System.out.println("Thread Interrupted");
+						
+					}
+					myAgent.send(respuesta);
 				}else
 					block();
 				
