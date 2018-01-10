@@ -17,8 +17,15 @@ public class SegundoAgente extends Agent{
 				ACLMessage msg = receive();
 				if(msg!=null) {
 					JOptionPane.showMessageDialog(null, "Tu mensaje os ha sido recibido, y es: " +msg.getContent());
-					System.out.println("¡No me gusto tu mensaje!");
+				
+					
+					//Respondiendo de vuelta
+					ACLMessage respuesta = msg.createReply();
+					respuesta.setContent("¡No me gusto tu mensaje!");
+					myAgent.send(respuesta);
 				}else block();
+				
+			
 			}
 			
 		});
