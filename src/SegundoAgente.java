@@ -14,15 +14,23 @@ public class SegundoAgente extends Agent{
 			@Override
 			public void action() {
 				
-				ACLMessage msg = receive();
-				if(msg!=null) {
-					JOptionPane.showMessageDialog(null, "Tu mensaje os ha sido recibido, y es: " +msg.getContent());
+				ACLMessage mensaje = receive();
+				if(mensaje!=null) {
+					if(mensaje.getContent().contains("Hola")) {
+						ACLMessage respuesta = mensaje.createReply();
+						respuesta.setContent("holaaaa, ¿como estas?");
+						myAgent.send(respuesta);
+					}else {
+						if(mensaje.getContent().contains("bien y tu")) {
+							ACLMessage respuesta = mensaje.createReply();
+							respuesta.setContent("muy bien, ahora me tengo que ir, ¡chao!");
+							myAgent.send(respuesta);
+						}
+					}
+					JOptionPane.showMessageDialog(null, "Tu mensaje os ha sido recibido, y es: " +mensaje.getContent());
 				
 					
-					//Respondiendo de vuelta
-					ACLMessage respuesta = msg.createReply();
-					respuesta.setContent("¡No me gusto tu mensaje!");
-					myAgent.send(respuesta);
+
 				}else block();
 				
 			
