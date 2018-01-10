@@ -35,16 +35,14 @@ public class SegundoAgente extends Agent{
 						}
 					}
 					//Se muestra el contenido del mensaje
-					JOptionPane.showMessageDialog(null,mensaje.getSender().getLocalName() + ": " +mensaje.getContent());
+					JOptionPane.showMessageDialog(null,mensaje.getSender().getLocalName() + " Tu mensaje os ha sido recibido, y es: " +mensaje.getContent());
 					//Pausa de 3 segundos
-					/**
 					try{ 
-						Thread.sleep(1000); 
+						Thread.sleep(3000); 
 					} catch(InterruptedException e ){ 
 						System.out.println("Thread Interrupted");
 						
 					}
-					**/
 					//Se envia la respuesta
 					myAgent.send(respuesta);
 
