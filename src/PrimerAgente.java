@@ -13,7 +13,7 @@ public class PrimerAgente extends Agent {
 		
 		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
 		msg.addReceiver(new AID("Joaquin", AID.ISLOCALNAME));
-		msg.setContent("Hola!");
+		msg.setContent("Hola");
 		msg.setLanguage("Espaniol");
 		send(msg);
 		
@@ -23,6 +23,17 @@ public class PrimerAgente extends Agent {
 			public void action() {
 				ACLMessage mensaje = receive();
 				if(mensaje!= null) {
+					if(mensaje.getContent().contains("como estas")) {
+						ACLMessage respuesta = mensaje.createReply();
+						respuesta.setContent("bien y tu?");
+						myAgent.send(respuesta);
+					}else {
+						if(mensaje.getContent().contains("chao")) {
+							ACLMessage respuesta = mensaje.createReply();
+							respuesta.setContent("Chaaaao");
+							myAgent.send(respuesta);
+						}
+					}
 					JOptionPane.showMessageDialog(null,"Mensaje: "+ mensaje.getContent());
 				}else
 					block();
