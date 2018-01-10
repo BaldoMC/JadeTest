@@ -47,14 +47,15 @@ public class PrimerAgente extends Agent {
 						}
 					}
 					//Se muestra por un mensaje el contenido
-					JOptionPane.showMessageDialog(null,"Mensaje de: " +mensaje.getSender().getLocalName() +" con texto: " + mensaje.getContent());
+					JOptionPane.showMessageDialog(null,mensaje.getSender().getLocalName() +": " + mensaje.getContent());
 					//Se pausa por 3 segundos
-					try{ 
-						Thread.sleep(3000); 
+					/**try{ 
+						Thread.sleep(1000); 
 					} catch(InterruptedException e ){ 
 						System.out.println("Thread Interrupted");
 						
 					}
+					*/
 					//Se envia la respuesta
 					myAgent.send(respuesta);
 				}else
