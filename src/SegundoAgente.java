@@ -36,9 +36,11 @@ public class SegundoAgente extends Agent{
 							respuesta.setContent("muy bien, ahora me tengo que ir, ¡chao!");
 							
 						}else {
+							//Si existe una respuesta se muestra el contenido.
 							if(!mensaje.getContent().equals("")) {
 								JOptionPane.showMessageDialog(null,mensaje.getSender().getLocalName() + ": " +mensaje.getContent());
 							}
+							//Se elimina el SegundoAgente
 							doDelete();
 						}
 					}					
@@ -50,6 +52,9 @@ public class SegundoAgente extends Agent{
 			}	
 		});
 	}
+	/**
+	 * Metodo que sobreescribe el takeDown de Agent
+	 */
 	protected void takeDown() {
 		System.out.println(getAID().getLocalName() +" se despide.");
 	}

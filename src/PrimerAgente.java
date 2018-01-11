@@ -14,7 +14,10 @@ public class PrimerAgente extends Agent {
 
 	protected void setup() {
 		System.out.println("Hola!, mi nombre es: " + getAID().getName());
-
+			/**
+			 * Metodo que agrega un comportamiento de un solo llamado
+			 * El cual manda un mensaje al agente Joaquin
+			 */
 			addBehaviour(new OneShotBehaviour() {
 
 				@Override
@@ -59,9 +62,11 @@ public class PrimerAgente extends Agent {
 								JOptionPane.showMessageDialog(null,mensaje.getSender().getLocalName() + ": " +mensaje.getContent());
 								respuesta.setContent("Chaaaao");
 							}else {
+								//Si existe una respuesta se muestra el contenido.
 								if(!mensaje.getContent().equals("")) {
 									JOptionPane.showMessageDialog(null,mensaje.getSender().getLocalName() + ": " +mensaje.getContent());
 								}
+								//Se elimina el primer agente
 								doDelete();
 							}
 						}
